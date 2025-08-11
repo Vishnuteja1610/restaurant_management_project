@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+
+    body{
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    h1{
+        color: #d35400;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+    p{
+        font-size: 1.2rem;
+        color:#555;
+    }
+    .container{
+        padding: 50px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h1>{{restaurant_name}}</h1>
+    <p>{{ Welcome_message}}</p>
+</div>
+{% endblock %}
