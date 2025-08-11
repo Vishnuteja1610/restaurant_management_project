@@ -1,1 +1,32 @@
-<p> Call us: {{ phone }} </p>
+{%extends "base.html"%}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    .container{
+        padding:50px;
+        text-align:center;
+    }
+    .logo{
+        width: 200px;
+        height: auto;
+        margin-bottom:20px;
+    }
+    h1{
+        color: #d35400;
+        font-size:2.5rem;
+    }
+    p{
+        font-size:1.2rem;
+        color: #555;
+    }
+</style>
+
+<div class="container">
+    <img src="{% static 'images/logo.png' %}" alt="Restaurant Logo" class="Logo">
+    <h1>{{ restaurant_name }}</h1>
+    <p>{{welcome_message}}</p>
+</div>
+{% endblock %}
