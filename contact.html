@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport">
-        <title> Contact </title>
-    </head>
-    <body>
-        <h2> Contact Us </h2>
-        <form id = "contactForm">
-            <label for = "name"> Name: </label> <br>
-            <input type = "text" id = "name" name = "name">
-
-            <label for = "email" > Email: </label> <br>
-            <input type = "email" id = "email" name="email"> 
-
-            <button type = "submit"> Submit </button>
+<html>
+<head>
+    <title>Contact Us</title>
+<style>
+    body{
+        font-family: Arial,sans-serif;
+        background: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;    
+    }
+    .contact-box {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        width: 350px;
+    }
+    h2{ text-align:center; margin-bottom:20px;}
+    label{ display:block; margin:8px 0 4px;}
+    input{
+        width:100px;
+        padding:10px;
+        border:1px solid #ddd;
+        border-radius:6px;
+    }
+    button{
+        margin-top:15px;
+        width:100%;
+        padding:10px;
+        border:none;
+        background: #007bff;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {background: #0056b3}
+</style>
+</head>
+<body>
+    <div class="contact-box">
+        <h2> Contact Us</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">submit</button>
         </form>
-
-        <footer style = "text-align:center;">
-            <p>Opening Hours: Mon-Fri: 11am-9pm, Sat-Sun: 10am-10p,m </p>
-        </footer>
-
-    </body>
+    </div>
+</body>
 </html>
