@@ -1,7 +1,6 @@
-from django.contrib import admin
-from .models import ResturantLocation
+from django.contrib import admin 
+from .models import ContractSubmission
 
-@admin.register(ResturantLocation)
-class ResturantLocationAdmin(admin.ModelAdmin):
-    list_display = ("address","city","state","zip_code")
-    search_fields = ("city","state","zip_code")
+@admin.regsiter(ContractSubmission)
+class ContractSubmissionAdmin(admin.ModelAdmin):
+    list_display = ("name","email","submitted_at")
