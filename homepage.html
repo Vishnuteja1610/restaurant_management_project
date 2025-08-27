@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resturant Homepage</title>
+</head>
+<body>
+    <h1>Welcome to our Resturant</h1>
+
+    {% if resturant %}
+        <h3>Address</h3>
+        <p>{{ resturant.address}}</p>
+
+        <h3> Opening Hours</h3>
+        <ul>
+            {% for day, hours in resturant.opening_hours.items %}
+                <li><strong>{{day }}:</strong>{{hours}}</li>
+            {% endfor %}
+        </ul>
+    {%else%}
+        <p>Resturant information not available. </p>
+    {% endif %}
+</body>
+</html>
