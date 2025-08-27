@@ -1,41 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Restaurant Homepage</title>
-    <style>
-        body{font-family:Arial, sans-serif; margin:40px;}
-        h1{color: #333;}
-        .menu-item{
-            border:1px solid #ddd;
-            padding:15px;
-            margin:10px 0;
-            border-radius:8px;
-            background: #f9f9f9;
-        }
-        .menu-item h2{ margin:0; color:#444;}
-        .price{font-weight:bold; color:green;}
-        .location{margin:20px 0; padding:10px; background: #eef;border-radius:5px;}
-    </style>
+    <title>Resturant Homepage</title>
 </head>
 <body>
-    <h1>Welcome to Our Restaurant</h1>
+    <h1> Welcome to Our Resturant</h1>
 
-    {%if location %}
-    <div class="location">
-        <h3> Restaurant Address</h3>
-        <p>{{location.address }},{{location.city }},{{location.state }}-{{location.zip_code}}</p>
-    </div>
-    {%endif%}
+    {% if resturant %}
+        <h3> Address</h3>
+        <p>{{resturant.address}}</p>
+    {% else %}
+        <p>Resturant address not available.</p>
+    {% endif %}
 
-    <h2>Our Menu</h2>
-    {%for item in menu %}
-    <div class ="menu-item">
-        <h2>{{item.name }}</h2>
-        <p>{{item.description}}</p>
-        <p class="price">${{item.price}}</p>
-    </div>
-    {%empty %}
-        <p>No menu items available.</p>
-    {%empty %}
 </body>
 </html>
