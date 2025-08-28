@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resturant Menu</title>
+</head>
+<body>
+    <h1>Menu </h1>
+
+    <!-- Search Bar -->
+    <form method="get">
+        <input type="text", name="q", placeholder="Search menu..." value="{{querry}}">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for item in menu_items %}
+            <li>{{ item.name }} - {{ item.description }}</li>
+        {% empty %}
+            <li> No items found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
