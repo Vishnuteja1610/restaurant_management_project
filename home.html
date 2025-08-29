@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ resturant_name }}</title>
+    <meta charset="UTF-8">
+    <title>Resturant Homepage</title>
 </head>
 <body>
-    <h1>Welcome to {{ resturant_name }}</h1>
+    <h1>Welcome to {{resturant.name}}</h1>
+    
+    {% if resturant.logo %}
+        <img src="{{resturant.logo.url}}" alt="{{ resturant.name }} Logo" width="200">
+    {% else %}
+        <p>No logo available</p>
+    {% endif %}
+
+    <p> Address: {{resturant.address}}</p>
+    <p>Phone:{{resturant.phone_number }}</p>
+
 </body>
 </html>
