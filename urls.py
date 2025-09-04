@@ -1,10 +1,7 @@
 from django.urls import path
-from .views import menu_api
-from . import views 
-
+from . import views
 
 urlpatterns = [
-    path('api/menu/',menu_api, name='menu_api'),
-    path('',views.home, name='home'),
-    path('faq/', views.faq,name='faq'),
+    path("",views.homepage, name="homepage")
+    path("order/place/",views.place_order, name="place_order")
 ]
