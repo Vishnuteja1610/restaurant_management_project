@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant Homepage</title>
+  <style>
+    .order-now-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #ff5733;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .order-now-btn:hover {
+      background-color: #e14a28;
+      transform: scale(1.05);
+    }
+    .center-container {
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-container">
+    <h1>Welcome to Our Restaurant</h1>
+    <p>Delicious food, just one click away!</p>
+    <a href="{% url 'place_order' %}" class="order-now-btn">🍔 Order Now</a>
+  </div>
+</body>
+</html>
