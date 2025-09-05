@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resturnat Homepage</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial,sans-serif;
+            background:url("/static/images/bg-resturant.jpg")no-repeat center fixed;
+            background-size:cover;
+            color:#fff;
+            text-align:center;
+        }
+        .overlay{
+            background: rgba(0,0,0,0.6);
+            padding: 50px 20px;
+            min-height:100vh;
+        }
+
+        h1{
+            font-size: 3rem;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:1.2rem;
+            margin-bottom:40px;
+        }
+        .food-gallery{
+            display:flex;
+            justify-content: center;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+
+        .food-gallery img{
+            width:250px;
+            height:180px;
+            object-fit:cover;
+            border-radius:12px;
+            transition:transform 0.3s;
+        }
+
+        .food-gallery img:hover{
+            transform:scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Welcome to Our Resturant</h1>
+        <p>Delicious meals and milkshakes made just for you!</p>
+
+        <div class="food-gallery">
+            <img src="/static/images/food1.jpg" alt="Delicious Burger">
+            <img src="/static/images/food2.jpg" alt="Tasty pizza">
+            <img src="/static/images/food3.jpg" alt="Refreshing Milkshake">
+        </div>
+    </div>
+</body>
+</html>
