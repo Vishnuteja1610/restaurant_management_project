@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        body{font-family:Arial, sans-serif; padding:30px;}
+        table{width:50px; border-collapse:collapse; margin:auto;}
+        th, td{border:1px solid #ccc; padding:10px; text-align:center;}
+        th{background: #f4f4f4;}
+        a { text-decoraation:none; color:red;}
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Your Cart</h2>
+    {% if cart %}
+        <table>
+            <tr>
+                <th>Item ID</th>
+                <th>Quantity</th>
+                <th>Remove</th>
+            </tr>
+            {% for item_id, quantity in cart.items %}
+            <tr>
+                <td>{{item_id}}</td>
+                <td>{{quantity}}</td>
+                <td><a href="{% url 'remove_from_cart' item_id %}"> Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p style="text-align:center; margin-top:20px;">
+            <a href="/"> Continue Shopping</a>
+        </p>
+</body>
+</html>
