@@ -1,4 +1,6 @@
-<div style="text-align: center; margin-top:20px;">
-    <h3>Current Date and Time</h3>
-    <p>{% now "l,d M Y H:i:s" %}</p>
-</div>
+<h3>Opening Hours</h3>
+<ul>
+    {% for hour in opening_hours %}
+        <li>{{hour.day }}: {{hour.open_time|time:"h:i A"}} - {{hour.close_time|time:"h:i A"}}</li>
+    {% endfor %}
+</ul>
