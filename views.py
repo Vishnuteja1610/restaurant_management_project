@@ -1,5 +1,12 @@
 from django.shortcuts import render
-import random
+from .models import ResturantInfo
+from .forms import ContactForm
 
-def order_confirmation(request,order_id):
-    return render(request,"order_confirmation.html",{"order_id":order_id})
+def contact_view(request):
+    form = ContactForm(request.POST or None)
+    if request.method == "POST" and form.is_vaild():
+         pass
+    
+    resturant = ResturantInfo.objects.first()
+    return render(request,"contact.html",{"form":form,"resturant":resturant})
+    
