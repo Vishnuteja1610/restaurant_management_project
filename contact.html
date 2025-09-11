@@ -1,51 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Us</title>    
-  <style>
-    .address-box {
-      margin-top: 20px;
-      padding: 15px;
-      border-left: 4px solid #4CAF50;
-      background: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+{% if messages %}
+    {% for message in message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
-</head>
-<body>
-    <h2> Contact Us</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">send</button>
-    </form>
-
-    {% if form.errors %}
-    <div style="color: red;">
-        <p>Please correct the following errors:</p>
-        <ul>
-            {% for field in form %}
-                {% for error in field.error %}
-                    <li>{{field.label}} : {{error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-</body>
-</html>
-
-
-  <style>
-    .address-box {
-      margin-top: 20px;
-      padding: 15px;
-      border-left: 4px solid #4CAF50;
-      background: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
-  </style>
-
-
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
