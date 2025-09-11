@@ -1,1 +1,11 @@
-{% include "partials/breadcrumbs.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Site Title{%endblock%}</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    {% include "footer.html" %}
+</body>
+</html>
