@@ -1,13 +1,15 @@
-{% if messages %}
-    {% for message in message %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - Spice Haven</title>
+</head>
+<body class="p-4">
+    <h1>Contact Us</h1>
+    <p>If you have any inquiries, feel free to email us:</p>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Send</button>
-</form>
+    <p>
+        <a href="mail:info@spicehaven.com">info@spicehaven.com</a>
+    </p>
+</body>
+</html>
