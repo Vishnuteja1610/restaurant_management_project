@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import OrderHistoryView
+from .views import MenuItemsByCategoryView
 
 urlpatterns = [
-    path('order-history/', OrderHistoryView.as_view(),name='order-history'),
+    path('menu-items/', MenuItemsByCategoryView.as_view(),name='menu-items-by-category'),
 ]
