@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import MenuCategoryListView
 
 urlpatterns = [
-    path("newsletter-signup/",views.newsletter_signup, name="newsletter_signup"),
+    path('categories/',MenuCategoryListView.as_view(),name = 'menu-categories'),
 ]
