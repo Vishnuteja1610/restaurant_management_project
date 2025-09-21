@@ -1,10 +1,18 @@
-from django.http import JsonResponse
-from utils.validation_utils import is_valid_email
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status, permissions
+from django.shortcuts import get_object_or_404
+from .models import MenuItem
+from .serializers import MenuItemSerializer
 
-def validate_user_email(request):
-    email = request.GET.get("email","")
-    if is_valid_email(email):
-        return JsonResponse({"vaild":True, "message":"Valid email"})
-    else:
-        return JsonResponse({"valid":False, "message": "Invalid email"})
+class UpdateMenuItemView(APIView):
+    permission_classes=[permissions.IsAdminUser]
+
+    def put(self, request, pk):
+        menu_item = get_object_or_404(MenuItem, pk=pk)
+        serializers = MenuItemSerializer(menu_item,data=request.data,partial=True)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
         
