@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from utils.validation_utils import is_valid_email
 
-def home(request):
-    context = {
-        "title":"Welcome to Spice Haven - Authentic Flavors in Hyderabad",
-        "restaurant-name":"Spice Haven",
-        "location":"Hyderabad",
-    }
-    return render(request,"home.html",context)
+def validate_user_email(request):
+    email = request.GET.get("email","")
+    if is_valid_email(email):
+        return JsonResponse({"vaild":True, "message":"Valid email"})
+    else:
+        return JsonResponse({"valid":False, "message": "Invalid email"})
+        
