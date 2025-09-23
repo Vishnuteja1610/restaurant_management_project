@@ -1,9 +1,12 @@
-from rest_framework.generics import RetrieveAPIView
-from .models import Order
-from .serializers import OrderSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import ContactFormSubmissionSerializer
 
-class OrderRetrieveAPIView(RetrieveAPIView):
-    queryset = Order.objects.all()
-    serializer_class = OrderSerializer
-    lookup_field = 'order_id'
-    
+class ContactFormSubmissionView(APIView):
+    def post(self, request):
+        serializer = ContactFormSubmissionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'success':'Contact from submitted'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
