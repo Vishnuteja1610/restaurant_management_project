@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from .models import MenuItem
+from .serializers import MenuItemSerializer
 
-# Create your views here.
+class DailySpecialsView(ListAPIView):
+    queryset = MenuItem.objects.filter(is_daily_special=True)
+    serializer_class=MenuItemSerializer
+    
