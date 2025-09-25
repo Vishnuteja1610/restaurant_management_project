@@ -1,12 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from .serializers import ContactFormSubmissionSerializer
+from rest_framework import status as drf_status
+from .models import Order
 
-class ContactFormSubmissionView(APIView):
-    def post(self, request):
-        serializer = ContactFormSubmissionSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'success':'Contact from submitted'}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class CancelOrderView(APIView):
+    def delete(self, request):
+        order_id = request.data.get('order_id')
+
+        try:
+            order = Order.objects.get(id=order_id)
+        except Order.DoesNotExist:
+            return Response({'error':'Order not found.'},status = drf_status.HTTP_404_NOT_FOUND)
+
+        order.status = 'cancelled'
+        order.save()
+        return Response({'message':'Order cancelled.','order_id':order_id}, status=drf_status.HTTP_200_OK)
+        
