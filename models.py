@@ -1,7 +1,12 @@
 from django.db import models
+from .utils import calculate_discount
 
-class Resturant(models.Model):
-    opening_days = models.CharField(
-        max_length=50,
-        help_text="Comma-separated days, e.g. 'Mon,Tue,Wed,Thu,Fri'"
-    )
+class Order(models.Model):
+
+    def calculate_total(self):
+        total=0
+        for item in self.items.all():
+            price = item.price
+            discounted_price = calculate_discount(price, item)
+            total +=discounted_price
+        return total
