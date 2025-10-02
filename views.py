@@ -1,15 +1,11 @@
-from rest_framework import generics
-from .models import UserReview
-from .serializers import UserReviewSerializer
+from rest_framework.views import APIView
+from rest_framework.response import response
+from rest_framework import status
+from .models import Coupon
+from django.utils import timezone
 
-class UserReviewCreateView(generics.CreateAPIView):
-    queryset = UserReview.objects.all()
-    serializers_class = UserReviewSerializer
-
-class MenuItemReviewListView(generics.ListAPIView):
-    serializer_class = UserReviewSerializer
-
-    def get_queryset(self):
-        menu_item_id = self.request.query_params.get('menu_item')
-        return UserReview.objects.filter(menu_item__id=menu_item_id)
-        
+class CouponValidationview(APIView):
+    def post(self, request):
+        code = request.data.get('code')
+        if not code:
+            return response({'error': 'code is required' },status=status.HTTP_400_BAD_REQUEST)
