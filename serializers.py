@@ -1,14 +1,8 @@
 from rest_framework import serializers
-from .models import Order
+from .models import MenuItem
 
-class OrderStatusUpdateSerializer(serializers.ModelSerializer):
+class MenuItemAvailabilitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Order
-        fields = ['id','status']
-    
-    def validate_status(self,value):
-        allowed = dict(Order.STATUS_CHOICES).keys()
-        if value not in allowed:
-            raise serializers.ValidationError("Invalid status.")
-        return value
+        model = MenuItem
+        fields = ['is_available']
         
